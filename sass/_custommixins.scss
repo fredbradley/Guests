@@ -1,0 +1,20 @@
+@mixin breakpoint($media) {
+	@if $media == xs {
+		@media(max-width: $screen-xs-max){@content;}
+	}
+	@else if $media == sm {
+		@media(min-width: $screen-tablet) and (max-width: $screen-desktop){@content;}   
+	}
+	@else if $media == md {
+		@media(min-width: $screen-desktop) and (max-width: $screen-lg-desktop){@content;}    
+	}
+	@else if $media == lg {
+		@media(min-width: $screen-lg-desktop){@content;}
+	}
+}
+
+@mixin respondto($media...) {
+    @each $mediatype in $media {
+        @include breakpoint($mediatype) {@content;}
+    }
+}
