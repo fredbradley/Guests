@@ -43,12 +43,20 @@
           <a class="navbar-brand" href="#">Project name</a>
         </div>
         <div class="navbar-collapse collapse">
+          {% if config.user_logged_in==1 %}
+          	<ul class="nav navbar-nav navbar-right">
+          		<li>
+          			<a href="?logout">Logout</a>
+          		</li>
+          	</ul>
+          {% else %}
           <form method="post" class="navbar-form navbar-right" role="form">
             {% import "macros.twig" as macro %}
             {{macro.form_group("Email", "user-email")}}
             {{macro.form_group("Password", "user-pass", "password")}}
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
+          {% endif %}
         </div><!--/.navbar-collapse -->
       </div>
     </div>
