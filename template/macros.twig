@@ -1,0 +1,11 @@
+{% macro form_group(name, id, type="text", class="form-control", value) %}
+	<div class="form-group">
+		<input type="{{type}}" id="{{id}}" name="{{id}}" value="{{value}}" placeholder="{{name}}" class="{{class}}">
+	</div>
+{% endmacro %}
+{% macro alert(type, title, content) %}
+	<div class="alert alert-{{type}}">
+		<p><strong>{{title}}</strong></p>
+		<p>{{content}}</p>
+	</div>
+{% endmacro %}

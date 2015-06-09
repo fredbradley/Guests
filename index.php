@@ -1,5 +1,8 @@
-<?php include dirname(__FILE__).'/includes/appstrap.php'; ?>
-<?php  echo $engine->get_template("html_head.twig", array("title" => "Test Title")); ?>
+<?php include dirname(__FILE__).'/includes/appstrap.php';
+	echo $engine->get_template("content.twig", array("title" => "Fred Bradley"));
+	exit();
+
+  echo $engine->get_template("html_head.twig", array("title" => "Test Title")); ?>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
