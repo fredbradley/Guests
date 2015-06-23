@@ -1,8 +1,14 @@
 {% macro form_group(name, id, type="text", class="form-control", value) %}
 	<div class="form-group">
-		<input type="{{type}}" id="{{id}}" name="{{id}}" value="{{value}}" placeholder="{{name}}" class="{{class}}">
+		{% import _self as macros %}
+		{{macros.input(name, id, type, class, value)}}
 	</div>
 {% endmacro %}
+
+{% macro input(name, id, type="text", class="form-control", value) %}
+	<input type="{{type}}" id="{{id}}" name="{{id}}" value="{{value}}" placeholder="{{name}}" class="{{class}}">
+{% endmacro %}
+
 {% macro alert(type, title, content) %}
 	<div class="alert alert-{{type}}">
 		<p><strong>{{title}}</strong></p>

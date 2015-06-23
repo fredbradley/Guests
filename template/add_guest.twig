@@ -1,0 +1,11 @@
+<form method="post">
+	{% import "macros.twig" as macro %}
+	{{macro.form_group("First Name", "first_name")}}
+	{{macro.form_group("Surame", "surname")}}
+	{{macro.form_group("Job Title", "jobtitle")}}
+	{{macro.form_group("Company", "company")}}
+	{{macro.form_group("Table Number", "table_number")}}
+	{{macro.form_group("Add Guest", "add_guest", "hidden", "", "1")}}
+	{{macro.form_group("Guest List", "guestlist", "hidden", "", "ourwedding")}}
+	{{macro.input("submit", "submit", "submit", "btn-lg btn btn-success", "Add Event")}}
+</form>

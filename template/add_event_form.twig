@@ -1,0 +1,6 @@
+<form method="post">
+	{% import "macros.twig" as macro %}
+	{{macro.form_group("Event Name", "event_name")}}
+	{{macro.form_group("Table Name", "table_name")}}
+	{{macro.input("submit", "submit", "submit", "btn-lg btn btn-success", "Add Event")}}
+</form>

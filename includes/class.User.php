@@ -8,14 +8,39 @@
 			if (isset($_GET['logout'])) {
 				$this->logout('/quick-deploy');
 			}
-			if (isset($_POST['user-email']) && isset($_POST['user-pass'])) {
-				$this->login($_POST['user-email'], $_POST['user-pass']);
-			}
+			
 			
 			if (isset($_SESSION['user'])) {
 				$this->user_logged_in = true;
 				$this->user_status = "loggedin";
 			}
+			if ($_POST) {
+				$this->post_functions();
+			}
+		}
+		
+		function post_functions() {
+			if (isset($_POST['user-email']) && isset($_POST['user-pass'])) {
+				$this->login($_POST['user-email'], $_POST['user-pass']);
+			}
+			if (isset($_POST['add_guest']) && $_POST['add_guest']==1) {
+				$user = array(
+					"first_name" => $_POST['first_name'],
+					"surname" => $_POST['surname'],
+					"jobtitle" => $_POST['jobtitle'],
+					"company" => $_POST['company'],
+					"table_number" => $_POST['table_number']
+				);
+				$this->db->add_guest($_POST['guestlist'], $user);
+			}
+			if (isset($_POST['event_name']) && isset($_POST['table_name'])) {
+				if ($this->db->add_event($_POST['event_name'], $_POST['table_name'])===true) {
+					$this->db->create_event_table($_POST['table_name']);
+					$this->create_alert("success", "Event Added");
+				} else {
+					$this->create_alert("warning", "Something went wrong!");
+				}	
+			}	
 		}
 		
 		function login($user, $pass) {
@@ -33,14 +58,15 @@
 					$_SESSION["user"]['email'] = $row['email'];
 					$this->user_status="loggedin";
 					$this->user_logged_in = true;
-				//	$this->redirect("/quick-deploy");
 					$this->create_alert("success", "Logged in");
+					return true;
 				else:
 					$this->create_alert("warning", "Wrong!");
 				endif;
 			else:
 				$this->create_alert("warning", "Wrong!");
 			endif;
+			return false;
 		
 		}
 		

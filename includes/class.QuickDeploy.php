@@ -2,6 +2,7 @@
 	class QuickDeploy extends Alert {
 		public $twig = false;
 		public $uri = false;
+		public $db = false;
 		function __construct() {
 			// Load TWIG
 			require_once dirname(__FILE__).'/libraries/Twig/Autoloader.php';
@@ -18,4 +19,6 @@
 			return $this->twig->render($template, $parse_settings);
 		}
 		
+		
+	
 	}
