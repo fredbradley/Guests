@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /quick-deploy
+RewriteRule ^([^/\.]+)/?$ index.php?page_slug=$1 [L]
+
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /quick-deploy/index.php [L]
+

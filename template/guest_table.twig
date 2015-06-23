@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+{% block content %}
+<div class="table-responsive">
+	<table id="list-guests" class="table table-hover">
+		<thead>
+			<tr>
+				{% for table_head in table_headers %}
+					<th>{{table_head}}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for guest in all_guests %}
+				<tr>
+					{%for key, heading in table_headers %}
+						{% if key=='edit'%}
+						<td><a href="edit_guest" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a></td>
+						{% else %}
+					<td>{{attribute(guest, key)}}</td>
+						{% endif %}
+					{%endfor%}
+				</tr>
+			{%endfor%}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
